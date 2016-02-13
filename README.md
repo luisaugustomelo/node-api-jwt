@@ -37,3 +37,7 @@ Send a `GET` request to `http://localhost:8080/api/users` with a header paramete
 You can also send the token as a URL parameter: `http://localhost:8080/api/users?token=YOUR_TOKEN_HERE`
 
 Or you can send the token as a POST parameter of `token`.
+
+More info: https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens#creating-a-sample-user
+
+By Luis.
