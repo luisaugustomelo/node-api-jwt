@@ -1,0 +1,11 @@
+{
+  "name": "node-api-with-token-authentication",
+  "main": "server.js",
+  "dependencies": {
+    "jsonwebtoken": "*",
+    "express": "*",
+    "body-parser": "*",
+    "mongoose": "*",
+    "morgan": "*"
+  }
+}
