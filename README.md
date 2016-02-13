@@ -39,7 +39,7 @@ You can also send the token as a URL parameter: `http://localhost:8080/api/users
 Or you can send the token as a POST parameter of `token`.
 
 
-##IncomingMessage {
+/*IncomingMessage {
   _readableState:
    ReadableState {
      objectMode: false,
