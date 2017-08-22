@@ -9,7 +9,7 @@ This is a starting point to demonstrate the method of authentication by verifyin
 - node and npm
 
 
-##Folder structure
+## Folder structure
 
 Folders look like this:
 
