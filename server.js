@@ -1,26 +1,26 @@
 // =================================================================
 // get the packages we need ========================================
 // =================================================================
-var express	    = require('express');
-var bodyParser  = require('body-parser');
-var morgan      = require('morgan');
-var mongoose    = require('mongoose');
+require('dotenv').config()
 
-var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
-var config = require('./config'); // get our config file
-var User   = require('./app/models/user'); // get our mongoose model
+const express	    = require('express');
+const bodyParser  = require('body-parser');
+const morgan      = require('morgan');
+const mongoose    = require('mongoose');
+
+const jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
+const User   = require('./app/models/user'); // get our mongoose model
 
 
-var app = express();
+const app = express();
 // =================================================================
 // configuration ===================================================
 // =================================================================
-var port = process.env.PORT || 8080; // used to create, sign, and verify tokens
-mongoose.connect(config.database, function(err){
-	if(err) console.log(err);
-}); // connect to database
+const port = process.env.PORT || process.env.PORT; // used to create, sign, and verify tokens
 
-app.set('superSecret', config.secret); // secret variable
+mongoose.connection.openUri(process.env.DB_HOST)
+
+app.set('superSecret', process.env.JWT_SECRET); // secret variable
 
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -82,9 +82,10 @@ apiRoutes.post('/authenticate', function(req, res) {
 
 				// if user is found and password is right
 				// create a token
-				var token = jwt.sign(user, app.get('superSecret')/*, {
-					expiresInMinutes: 1440 // expires in 24 hours
-				}*/);
+				var token = jwt.sign(user, app.get('superSecret')//, {
+				//	expiresInMinutes: 1440 // expires in 24 hours
+				//}
+				);
 
 				res.json({
 					success: true,
@@ -156,5 +157,5 @@ app.use('/api', apiRoutes);
 // =================================================================
 // start the server ================================================
 // =================================================================
-app.listen(port);
-console.log('Magic happens at http://localhost:' + port);
+app.listen(process.env.PORT);
+console.log('Magic happens at http://localhost:' + process.env.PORT);

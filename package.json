@@ -1,11 +1,26 @@
 {
   "name": "node-api-with-token-authentication",
+  "version": "1.0.0",
+  "description": "node.js api",
   "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/.bin/standard --fix && NODE_ENV=test ava test/index.js --verbose",
+    "dev": "nodemon server"
+  },
+  "author": "Luis Augusto Melo Rohten",
+  "license": "MIT",
   "dependencies": {
-    "jsonwebtoken": "*",
-    "express": "*",
+    "ava": "^0.22.0",
     "body-parser": "*",
+    "dotenv": "^4.0.0",
+    "express": "*",
+    "jsonwebtoken": "*",
     "mongoose": "*",
-    "morgan": "*"
+    "morgan": "*",
+    "nodemon": "^1.11.0"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "supertest": "^3.0.0"
   }
 }
