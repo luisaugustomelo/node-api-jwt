@@ -11,7 +11,6 @@ This is a starting point to demonstrate the method of authentication by verifyin
 ## Running
 
 - npm run dev
-or
 - npm test
 
 ## Usage
