@@ -8,6 +8,12 @@ This is a starting point to demonstrate the method of authentication by verifyin
 
 - node and npm
 
+## Running
+
+- npm run dev
+or
+- npm test
+
 ## Usage
 
 1. Clone the repo: `git clone git@github.com:scotch-io/node-token-authentication`
@@ -25,7 +31,7 @@ Send a `POST` request to `http://localhost:8080/api/authenticate` with test user
 
 ```
   {
-    name: 'Nick Cerminara',
+    name: 'Nick Mongoose',
     password: 'password'
   }
 ```
@@ -39,5 +45,3 @@ You can also send the token as a URL parameter: `http://localhost:8080/api/users
 Or you can send the token as a POST parameter of `token`.
 
 More info: https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens#creating-a-sample-user
-
-By Luis.
