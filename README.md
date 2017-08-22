@@ -8,10 +8,21 @@ This is a starting point to demonstrate the method of authentication by verifyin
 
 - node and npm
 
-## Running
 
-- npm run dev
-- npm test
+##Folder structure
+
+Folders look like this:
+
+```bash
+.
+├── /test/                       # unit tests
+├── /app/                        # mvc files
+│   ├── /model/                  # sql scripts and database connection
+│   ├── /controllers/            # business logic
+|   ├── /views/                  # application views
+├── .env                         # put your keys and secrets here
+└── server.js                    # start server
+```
 
 ## Usage
 
