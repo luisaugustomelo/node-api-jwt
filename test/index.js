@@ -1,30 +1,61 @@
 const app = require('../')
 const test = require('ava')
+const http = require('ava-http')
 const axios = require('axios')
-const User   = require('./app/models/user') // get our mongoose model
+const User = require('../app/models/user') // get our mongoose model
+const userController = require('../app/controllers/userController')
 const faker = require('faker')
 
-test.before(async t => {
+test.before(t => {
   app.listen()
+})
 
-	userName = faker.name.findName()
-	userPass = faker.internet.password()
+test('create user and validate token', async t => {
+  var userName = faker.name.findName()
+  var userPass = faker.internet.password()
+  var userEmail = faker.internet.email()
 
-	var _user = new User({
-		name: userName,
-		password: userPass,
-		admin: true
-	});
-	_user.save(function(err) {
-		if (err) throw err;
+  var _user = new User({
+    name: userName,
+    password: userPass,
+    email: userEmail,
+    admin: true
+  })
 
-		console.log('User saved successfully');
-		res.json({ success: true });
-	});
+  _user.save(function (err) {
+    if (err) throw err
+  })
+
+  var token = userController.getToken(app, userName)
+
+  var instance = await axios.create({
+    baseURL: 'http://localhost:8080/api',
+    headers: {'x-access-token': token}
+  })
+
+  t.true(instance.defaults.validateStatus(200))
+  t.false(instance.defaults.validateStatus(403))
+})
+
+test('reject request without token', async t => {
+  var body = {'name': faker.name.findName(), 'password': faker.internet.password()}
+  var res = await http.postResponse('http://localhost:8080/api/authenticate', {body})
+    .then(function (response) {
+      t.is(response.body.success, false)
+    })
+    .catch(function () {
+      console.log(res)
+    })
+})
 
 
-  /* realizar um request para retornar o token
-  axios.defaults.baseURL = 'http://localhost:8080/'
-  axios.defaults.headers.common['x-app-token'] = token
-  axios.defaults.validateStatus = (status) => (status >= 200 && status < 500)*/
+test('accept request with token', async t => {
+  body = {'name': 'Nick Mongoose', 'password': 'password'}
+  res = await http.postResponse('http://localhost:8080/api/authenticate', {body})
+    .then(function (response) {
+      t.is(response.body.success, true)
+    })
+    .catch(function () {
+      console.log(res)
+    })
 })
