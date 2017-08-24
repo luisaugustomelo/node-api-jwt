@@ -20,10 +20,10 @@
     "faker": "^4.1.0",
     "jsonwebtoken": "*",
     "mongoose": "*",
+    "mongoose-rollback": "^1.1.4",
     "morgan": "*",
     "nodemon": "^1.11.0",
-    "standard": "^10.0.2",
-    "uuid": "^3.0.1"
+    "standard": "^10.0.2"
   },
   "devDependencies": {
     "ava": "^0.19.1",

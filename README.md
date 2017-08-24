@@ -32,7 +32,7 @@ Folders look like this:
 4. Add your own MongoDB database to `.env`
 5. Start the server: `sudo npm run dev`
 6. Create sample user by visiting: `http://localhost:8080/setup`
-7. The test can runned with `npm test`
+7. The test can runned with `sudo npm test`
 
 Once everything is set up, we can begin to use our app by creating and verifying tokens.
 

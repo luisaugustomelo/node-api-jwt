@@ -1,6 +1,3 @@
-// =================================================================
-// get the packages we need ========================================
-// =================================================================
 require('dotenv').config()
 
 const express = require('express')
@@ -32,10 +29,10 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 
 // =================================================================
-// routes ==========================================================
+// main routes =====================================================
 // =================================================================
-// Criar uma rota específica para este método
-app.get('/setup', function (req, res) {
+
+app.get('/setup', function (req, res) { // Criar um modelo específico para este método
   var userName = faker.name.findName()
   var userPass = faker.internet.password()
   var userEmail = faker.internet.email()
@@ -60,9 +57,9 @@ app.get('/', function (req, res) {
   res.send('Hello! The API is at http://localhost:' + port + '/api')
 })
 
-// ---------------------------------------------------------
-// get an instance of the router for api routes
-// ---------------------------------------------------------
+// =================================================================
+// user routes =====================================================
+// =================================================================
 
 userController.init(app, User)
 

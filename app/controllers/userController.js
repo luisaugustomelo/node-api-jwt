@@ -85,12 +85,6 @@ function init (app, User) {
 // http://localhost:8080/api/authenticate
 // POST -> Body -> x-www-form-unlencoded
 
-function getToken (app, userName) {
-  var token = jwt.sign(userName, app.get('superSecret'))
-  return token
-}
-
 module.exports = {
-  init,
-  getToken
+  init
 }
